@@ -1,6 +1,6 @@
 from tkinter import *
 import requests
-
+import ApiKey
 
 
 def main():
@@ -17,7 +17,7 @@ def main():
     
 
 
-def WeatherReport(cityName = "Toronto", key = "1a6e299186e76c80b2ff984ceebf2725"):
+def WeatherReport(cityName = "Toronto", key = ApiKey.key()):
 
     response = requests.get(f"http://api.openweathermap.org/data/2.5/weather?q={cityName}&units=metric&appid={key}")
     weatherReport = response.json()
@@ -35,9 +35,6 @@ def WeatherReport(cityName = "Toronto", key = "1a6e299186e76c80b2ff984ceebf2725"
     return outputDict
 
    
-
-
-
 
 
 main()
