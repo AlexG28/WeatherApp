@@ -3,15 +3,35 @@ import requests
 import ApiKey
 
 
+
+
+
+def updateCity():
+    cityName = cityInput.get()
+    data = WeatherReport(cityName)
+
+    Label(window, text = (f"the temperature in {cityName} is {data['temperature']}"), bg='white', fg = 'black').grid(row=0, column=0,sticky=W)
+
+
+
 def main():
+    global window 
     window = Tk()
     window.title("Weather App")
     window.configure(background = "white")
 
     data = WeatherReport()
 
-    Label(window, text = (f"the temperature is {data['temperature']}"), bg='white', fg = 'black').grid(row=1, column=1,sticky=W)
+    Label(window, text = (f"the temperature in Toronto is {round(data['temperature'],2)}"), bg='white', fg = 'black').grid(row=0, column=0,sticky=W)
+   
+    global cityInput
+    cityInput = Entry(window, width = 20, bg = "white")
+    cityInput.grid(row=1, column = 0, sticky=W)
+
+    Button(window, text = "Submit", width = 6, command = updateCity).grid(row = 3, column=1, sticky=W)
+
     
+
     window.mainloop()
 
     
