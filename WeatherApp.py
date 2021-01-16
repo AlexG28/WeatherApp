@@ -11,9 +11,9 @@ def updateCity():
 
     data = WeatherReport(cityName)
    
-    textTemperature.set(f"The temperature in {cityName} is {data['temperature']}")
-    textHumidity.set(f"The humidity in {cityName} is {data['humidity']}")
-    textWindspeed.set(f"The windpseed in {cityName} is {data['windspeed']}")
+    textTemperature.set(f"The temperature in {cityName} is {data['temperature']} degrees Celcius")
+    textHumidity.set(f"The humidity in {cityName} is {data['humidity']} percent")
+    textWindspeed.set(f"The windpseed in {cityName} is {data['windspeed']} kilometers per hour")
 
     if data['main'] == 'Clouds':
         photo1.configure(file='weatherSymbols\\cloudy.png')
@@ -55,7 +55,7 @@ def main():
     Label(window, textvariable = textHumidity, bg='white', fg = 'black').grid(row=1, column=1,sticky=W)
     Label(window, textvariable = textWindspeed, bg='white', fg = 'black').grid(row=2, column=1,sticky=W)
 
-    Label(window, image = photo1).grid(row =0, column = 0, sticky=W)
+    Label(window, image = photo1).grid(row = 3, column = 0, sticky=W)
     updateCity()
 
     window.mainloop()
